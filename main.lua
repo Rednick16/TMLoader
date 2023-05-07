@@ -1,5 +1,9 @@
 local utils = require "utils"
 
+function Update(deltaTime)
+
+end
+
 local function main()
     local loaderUI, mainView = utils.setupUI("Rednick16", "Extra Settings for Terraria", "Please no more terraria")
     
