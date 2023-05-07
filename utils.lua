@@ -10,6 +10,18 @@ function getValueForKey(key)
     return au.defaultsValueForKey(key)
 end
 
+--[[
+Usage:
+local row, component = getPickerViewSelection("someKey")
+print("Selected row:", row)
+print("Selected component:", component)
+--]]
+function getPickerViewSelection(key)
+    local selectedRow = getValueForKey(key).selectedRow
+    local selectedComponent = getValueForKey(key).selectedComponent
+    return selectedRow, selectedComponent
+end
+
 function utils.setupUI(author, title, description)
     local section = {
         Title = "Author: " .. author,
@@ -26,16 +38,16 @@ function utils.setupUI(author, title, description)
             }
         }
     }
-    return section
+    return section, section.Items[1]
 end
 
-function utils.addSection(loaderUI, title, description)
+function utils.addSection(view, title, description)
     local section = {
         Title = title,
         Description = description,
         Items = { }
     }
-    table.insert(loaderUI.Items[1].Sections, section)
+    table.insert(view.Sections, section)
     return section
 end
 
