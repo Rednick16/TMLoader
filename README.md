@@ -1,4 +1,4 @@
-# TMLoader
+# TMLoader - iOS Loader
 
 TMLoader is a tool that allows you to create mods for Terraria using Lua scripts. To create a mod, you need to have a main.lua file and any additional Lua files that you want to include in your mod.
 
