@@ -33,3 +33,5 @@ TMLoader has a mod browser where users can browse and install mods. Currently, m
 Once the feature is completed, creators will be able to upload their mods through the Mod Broswe Page by Clicking the "+" and selecting upload. The mods will then be reviewed and, if approved, will appear in the mod browser for other users to browse and install. More information on how to upload mods will be provided once the feature is completed.
 
 Stay tuned for updates on this feature and other upcoming changes to TMLoader.
+
+* more: - https://red16.gitbook.io/tmloader-documentation/
