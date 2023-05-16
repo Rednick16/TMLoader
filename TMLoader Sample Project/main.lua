@@ -85,6 +85,65 @@ function Update()
     end
 end
 
+-- This is my Free craft mod for terraria xd Its incomplete i need to fix a few things.
+function freeCraft()
+    local recipes = mod.GetMemberValue(null, "Terraria.Main.recipe")
+    if recipes ~= null then
+        for i = 0, array.GetLength(recipes) - 1 do
+            local recipe_element = array.GetValueAtIndex(recipes, i)
+            if recipe_element ~= null then
+                local recipe = au.read("void*", recipe_element)
+                if recipe ~= null then
+                    local requiredItems = mod.GetMemberValue(recipe, "requiredItem")
+                    for ri = 0, array.GetLength(requiredItems) - 1 do
+                        local requiredItem_element = array.GetValueAtIndex(requiredItems, ri)
+                        if requiredItem_element ~= null then
+                            local requiredItem = au.read("void*", requiredItem_element)
+                            if requiredItem ~= null then
+                                mod.SetMemberValue(requiredItem, "type", mod.ItemType(""))
+                                mod.SetMemberValue(requiredItem, "stack", 0)
+                            end
+                        end
+                    end
+
+                    -- I am having issues with this part i am still fixing it.
+                    local requiredItemQuickLookups = mod.GetMemberValue(recipe, "requiredItemQuickLookup")
+                    if requiredItemQuickLookups ~= null then
+                        for ji = 0, array.GetLength(requiredItemQuickLookups) - 1 do
+                            local requiredItemQuickLookup_element = array.GetValueAtIndex(requiredItemQuickLookups, ji)
+                            if requiredItemQuickLookup_element ~= null then
+                                local requiredItemQuickLookup = au.read("void*", requiredItemQuickLookup_element)
+                                if requiredItemQuickLookup ~= null then
+                                    mod.SetMemberValue(requiredItemQuickLookup, "itemIdOrRecipeGroup", mod.ItemType(""))
+                                    mod.SetMemberValue(requiredItemQuickLookup, "stack", 0)
+                                end
+                            end
+                        end
+                    end
+
+                    local requiredTiles = mod.GetMemberValue(recipe, "requiredTile")
+                    if requiredTiles ~= null then
+                        for j = 0, array.GetLength(requiredTiles) - 1 do
+                            local required_element = array.GetValueAtIndex(requiredTiles, j)
+                            if required_element ~= null then
+                                au.write("int", required_element, -1)
+                            end
+                        end
+                    end
+
+                    mod.SetMemberValue(recipe, "needHoney", false)
+                    mod.SetMemberValue(recipe, "needWater", false)
+                    mod.SetMemberValue(recipe, "needLava", false)
+
+                    mod.SetMemberValue(recipe, "needSnowBiome", false)
+                    mod.SetMemberValue(recipe, "needGraveyardBiome", false)
+                    mod.SetMemberValue(recipe, "needEverythingSeed", false)
+                end
+            end
+        end
+    end
+end
+
 local function setup(mainView)
     local section = utils.addSection(mainView, "Basics", "")
     utils.addSwitch(section, "godmodeKey", "Godmode", 0, "")
